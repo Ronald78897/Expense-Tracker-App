@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Income from "./component/Income";
 import Expense from "./component/Expense";
 import CurrenBalance from "./component/CurrentBalance";
+import Record from "./component/Record";
 const App = () => {
   const [IncomeRecord, setIncomeRecord] = useState([]);
   const [ExpenseRecord, setExpenseRecord] = useState([]);
@@ -9,7 +10,15 @@ const App = () => {
   const [SumofExpense, setSumExpense] = useState("");
   console.log(SumofExpense);
   return (
-    <div>
+    <div
+      style={{
+        marginLeft: "20px",
+        backgroundColor: "lightblue",
+
+        textAlign: "center",
+      }}
+      className="ui container"
+    >
       <h1
         style={{
           color: "Blue",
@@ -34,6 +43,17 @@ const App = () => {
         SumofExpense={SumofExpense}
         setSumExpense={setSumExpense}
       />
+
+      {/* <Record
+        IncomeRecord={IncomeRecord}
+        setIncomeRecord={setIncomeRecord}
+        SumofIncome={SumofIncome}
+        setSumIncome={setSumIncome}
+        ExpenseRecord={ExpenseRecord}
+        setExpenseRecord={setExpenseRecord}
+        SumofExpense={SumofExpense}
+        setSumExpense={setSumExpense}
+      /> */}
     </div>
   );
 };

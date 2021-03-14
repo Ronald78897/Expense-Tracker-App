@@ -14,14 +14,25 @@ const Expense = ({
   };
 
   const displayExpense = () => {
-    return ExpenseRecord.map((elements) => {
+    return ExpenseRecord.map((elements, id) => {
       return (
-        <div>
+        <div key={id}>
           Expense $ {elements}
+          <button value={id} onClick={deleteExpense}>
+            Delete Record
+          </button>
           <br></br>
         </div>
       );
     });
+  };
+
+  const deleteExpense = (event) => {
+    var id = event.target.value;
+    console.log(id);
+    if (id > -1) {
+      setExpenseRecord(ExpenseRecord.splice(id, 1));
+    }
   };
 
   const AddExpense = () => {
@@ -48,13 +59,17 @@ const Expense = ({
         <b>Enter your Expense amount</b>
       </label>
       <br></br>
-      <input
-        type="text"
-        value={expenseText}
-        onChange={(e) => setExpense(e.target.value)}
-      />
+      <div className="ui input focus">
+        <input
+          type="number"
+          value={expenseText}
+          onChange={(e) => setExpense(e.target.value)}
+        />
+      </div>
       <br></br>
-      <button onClick={showExpense}>Add Expense</button>
+      <button className="Tiny ui teal button" onClick={showExpense}>
+        Add Expense
+      </button>
     </div>
   );
 };

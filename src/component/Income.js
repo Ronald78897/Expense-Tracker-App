@@ -14,14 +14,28 @@ const Income = ({
   };
 
   const displayIncome = () => {
-    return IncomeRecord.map((elements) => {
+    return IncomeRecord.map((elements, id) => {
       return (
-        <div>
+        <div key={id}>
           Income $ {elements}
+          <button value={id} onClick={removeItem}>
+            Delete Record
+          </button>
           <br></br>
         </div>
       );
     });
+  };
+
+  //   const deleteIncome = (event) => {
+  //     let id = event.target.value;
+  //
+  //     setIncomeRecord(IncomeRecord.splice(IncomeRecord.indexOf(id, 1)));
+  //   };
+  const removeItem = (event) => {
+    var id = event.target.value;
+    console.log(id);
+    return setIncomeRecord(IncomeRecord.splice(id, 1));
   };
 
   const AddIncome = () => {
@@ -31,8 +45,6 @@ const Income = ({
       }, 0)
     );
     return SumofIncome;
-
-    //return SumofIncome;
   };
 
   //Returning JSX
@@ -60,13 +72,17 @@ const Income = ({
           <b>Enter your Income amount</b>
         </label>
         <br></br>
-        <input
-          type="text"
-          value={incomeText}
-          onChange={(e) => setIncome(e.target.value)}
-        />
+        <div className="ui input focus">
+          <input
+            type="number"
+            value={incomeText}
+            onChange={(e) => setIncome(e.target.value)}
+          />
+        </div>
         <br></br>
-        <button onClick={() => showIncome()}>Add Income</button>
+        <button className="Tiny ui teal button" onClick={() => showIncome()}>
+          Add Income
+        </button>
       </div>
     </div>
   );
