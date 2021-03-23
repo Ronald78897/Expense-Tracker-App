@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CurrenBalance = ({ SumofIncome, SumofExpense, curenBal, setBal }) => {
+const CurrenBalance = ({ SumofIncome, SumofExpense }) => {
   const Balance = () => {
     return SumofIncome - SumofExpense;
     //return curenBal;

@@ -17,8 +17,8 @@ const Income = ({
     return IncomeRecord.map((elements, id) => {
       return (
         <div key={id}>
-          Income $ {elements}
-          <button value={id} onClick={removeItem}>
+          {id + 1}. Income $ {elements}
+          <button value={id} onClick={() => removeItem(id)}>
             Delete Record
           </button>
           <br></br>
@@ -27,15 +27,8 @@ const Income = ({
     });
   };
 
-  //   const deleteIncome = (event) => {
-  //     let id = event.target.value;
-  //
-  //     setIncomeRecord(IncomeRecord.splice(IncomeRecord.indexOf(id, 1)));
-  //   };
-  const removeItem = (event) => {
-    var id = event.target.value;
-    console.log(id);
-    return setIncomeRecord(IncomeRecord.splice(id, 1));
+  const removeItem = (id) => {
+    setIncomeRecord(IncomeRecord.filter((num, index) => index !== id));
   };
 
   const AddIncome = () => {

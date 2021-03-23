@@ -17,8 +17,8 @@ const Expense = ({
     return ExpenseRecord.map((elements, id) => {
       return (
         <div key={id}>
-          Expense $ {elements}
-          <button value={id} onClick={deleteExpense}>
+          {id + 1}.Expense $ {elements}
+          <button value={id} onClick={() => removeItem(id)}>
             Delete Record
           </button>
           <br></br>
@@ -27,12 +27,8 @@ const Expense = ({
     });
   };
 
-  const deleteExpense = (event) => {
-    var id = event.target.value;
-    console.log(id);
-    if (id > -1) {
-      setExpenseRecord(ExpenseRecord.splice(id, 1));
-    }
+  const removeItem = (id) => {
+    setExpenseRecord(ExpenseRecord.filter((num, index) => index !== id));
   };
 
   const AddExpense = () => {
